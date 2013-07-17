@@ -28,8 +28,8 @@
 
      {:nudge/id   :doc4
       :nudge/type :test2
-      :a              {:a 1
-                       :b 1}}
+      :a          {:a 1
+                   :b 1}}
 
      {:nudge/id   :doc5
       :nudge/type :double
@@ -95,14 +95,14 @@
   (is (=
        (db/with-db testdata
          (q {:nudge/type :test2
-             :a              {:b 1}}))
+             :a          {:b 1}}))
        #{{:nudge/type :test2, :a {:a 1, :b 1}, :nudge/id :doc4}}))
   (is (=
        (db/with-db testdata
          (q {:nudge/type :double
              :a              {:a 1}
-             :b              {:a 1}})
-         #{{:nudge/id :doc6, :nudge/type :double, :a {:a 1}, :b {:a 1}}}))))
+             :b              {:a 1}}))
+       #{{:nudge/id :doc6, :nudge/type :double, :a {:a 1}, :b {:a 1}}})))
 
 (deftest subqueries
   (is (=
@@ -142,5 +142,3 @@
           :reference {:nudge/type 
                       :id-test, :a 1, 
                       :nudge/id :id1}}})))
-
-(run-tests)

@@ -6,7 +6,7 @@
             [nudge.convert :as convert]
             [nudge.db :as db]))
 
-(def test1 {:nudge/id   (id :doc1)
+(def test1 {:nudge/id   :doc1
             :nudge/type :test1
             :a         1})
 
@@ -21,5 +21,5 @@
 
 (deftest fetch-by-id
   (is (= (db/with-db testdata
-           (db/get-document-by-id (id :doc1)))
+           (db/get-document-by-id :doc1))
          test1)))

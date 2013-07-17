@@ -82,7 +82,7 @@
                    (store/fetch db [this :value])
                    db))})
 
-(extend clojure.lang.PersistentArrayMap
+(extend clojure.lang.PersistentHashMap
   Derefable
   {:deref-value (fn [this db]
                   (into {} (map (fn [[key val]]

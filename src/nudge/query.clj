@@ -43,8 +43,9 @@ returns a new query-map with a bound restraint"
              (cond
                ;; fully defined
                (and (not (subquery? key))
+                    (not (map? val))
                     (keyword? key)
-                    (direct? val)) 
+                    (direct? val))
                -2
                (restraint? val) 
                -1
@@ -106,7 +107,7 @@ returns a new query-map with a bound restraint"
     (into #{} (map :doc
                    (keep #(and (:nudge/id %) ; only documents
                                (validate (assoc query-map :doc %)))
-                         traverse)))))
+                         (dbg traverse))))))
 
 (defn assoc-maybe [map kvs]
   (if-not (empty? kvs)
